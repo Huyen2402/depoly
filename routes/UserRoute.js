@@ -1,5 +1,7 @@
 const user_router = require("express").Router();
 const UserController = require("../controller/UserController");
+const QR = require('../other/bundle');
+user_router.get('/QR', QR.ScanQR);
 user_router.get('/', UserController.GetAll)
 
 user_router.get('/search', (req,res) => {
