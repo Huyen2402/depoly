@@ -7,7 +7,7 @@ user_router.get('/', UserController.GetAll)
 user_router.get('/search', (req,res) => {
 	
 })
-
+user_router.post('/login', UserController.login)
 user_router.get('/create', (req, res) => {
 	
 })

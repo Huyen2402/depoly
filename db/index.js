@@ -17,6 +17,8 @@ const sequelize = new Sequelize(config.db.DB, config.db.USER, config.db.PASSWORD
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 db.User = require("../model/UserModel")(sequelize, Sequelize);
+db.Product = require("../model/ProductModel")(sequelize, Sequelize);
+db.TypeProduct= require("../model/TypeProductModel")(sequelize, Sequelize);
 (async function () {
     try {
         await sequelize.authenticate();

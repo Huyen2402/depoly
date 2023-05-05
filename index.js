@@ -5,6 +5,8 @@ const PORT = config.app.port;
 const Sequelize = require("sequelize");
 const db = require("./db/index");
 const user_router = require("./routes/UserRoute");
+const product_router = require("./routes/ProductRoute");
+const typeproduct_router = require("./routes/TypeProductRoute");
 // app.get('/hello', function (req, res) {
 //     console.log("hello");
 // // // connect to your database
@@ -27,9 +29,11 @@ const user_router = require("./routes/UserRoute");
 // // });
 
 // });
+app.use('/product', product_router);
 app.use('/user', user_router);
+app.use('/type', typeproduct_router);
 db.sequelize.sync();
 
 app.listen(PORT, ()=>{
-    console.log(`Server is running on port ${PORT} and url is  http://localhost:3000/`);
+    console.log(`Server is running on port ${PORT} and url is  http://localhost:3003/`);
 })
