@@ -9,14 +9,14 @@ module.exports = (sequelize, Sequelize) => {
       },
       
     },{
-        associate: function (models) {
-            TypeProduct.hasMany(
-                models.Product,
-                { through: 'ID' }
-            );
-            
-        }
+       
     });
-  
+    TypeProduct.associate = (Models) => {
+      TypeProduct.hasMany(Models.Product, {
+        foreignKey: 'TypeProductID',
+        sourceKey: 'ID',
+      });
+    };
+      
     return TypeProduct;
   };

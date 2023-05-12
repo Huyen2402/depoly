@@ -19,6 +19,8 @@ db.sequelize = sequelize;
 db.User = require("../model/UserModel")(sequelize, Sequelize);
 db.Product = require("../model/ProductModel")(sequelize, Sequelize);
 db.TypeProduct= require("../model/TypeProductModel")(sequelize, Sequelize);
+db.Bill= require("../model/BillModel")(sequelize, Sequelize);
+db.BillDetail= require("../model/BillDetail")(sequelize, Sequelize);
 (async function () {
     try {
         await sequelize.authenticate();
@@ -26,6 +28,18 @@ db.TypeProduct= require("../model/TypeProductModel")(sequelize, Sequelize);
       } catch (error) {
         console.error('Unable to connect to the database:', error);
       }
+       // intercept sequelize `set()` to set column as null if the provided value is empty string ''
+   
+    // import all models file
+    
+
+    Object.keys(db).forEach((modelName) => {
+        if (db[modelName].associate) {
+            db[modelName].associate(db);
+        }
+    });
+
+    
   })();
 
 

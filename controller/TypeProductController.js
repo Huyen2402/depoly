@@ -22,7 +22,20 @@ exports.GetAll = async(req, res, next) => {
 exports.findOne = (req, res) => {
   
 };
-
+exports.findByIDCate = async (req, res) => {
+  console.log("findByIDCate", req.query.id);
+  try {
+    const Pros = await TypeProduct.findAll({ 
+      
+        include: [
+        { model: db.Product, where: { TypeProductID:  req.query.id } }
+      ], });
+      console.log(Pros);
+    res.json( {data: Pros});
+  } catch (error) {
+    console.log(error);
+  }
+};
 // Update a Tutorial by the id in the request
 exports.update = (req, res) => {
   

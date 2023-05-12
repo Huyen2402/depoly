@@ -6,7 +6,7 @@ typeproduct_router.get('/', TypeProductController.GetAll);
 typeproduct_router.get('/search', (req,res) => {
 	
 })
-
+typeproduct_router.get('/findByID', TypeProductController.findByIDCate)
 typeproduct_router.get('/create', (req, res) => {
 	
 })

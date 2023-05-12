@@ -4,7 +4,10 @@ const Product = db.Product;
 module.exports = (sequelize, Sequelize) => {
     const Product = sequelize.define("Products", {
         ID: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        allowNull: false,
+          autoIncrement: true,
+        primaryKey: true
       },
       CodeID: {
         type: Sequelize.STRING
@@ -21,18 +24,18 @@ module.exports = (sequelize, Sequelize) => {
       Img: {
         type: Sequelize.STRING
       },
-      TypeProduct: {
+      TypeProductID: {
         type: Sequelize.INTEGER
       }
     },{
-      associate: function (models) {
-        Product.belongsTo(
-            models.TypeProduct,
-            { foreignKey: 'TypeProduct' }
-        );
-        
-    }
+   
     });
+    Product.associate = (Models) => {
+      Product.belongsTo(Models.TypeProduct, {
+        foreignKey: 'TypeProductID',
+        targetKey: 'ID',
+      });
+    };
     
     return Product;
   };
