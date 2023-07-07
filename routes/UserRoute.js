@@ -1,8 +1,10 @@
 const user_router = require("express").Router();
 const UserController = require("../controller/UserController");
+const AuthMiddleWare = require("../middleware/AuthMiddleware");
+const AuthController = require("../controller/AuthController");
 const QR = require('../other/bundle');
 user_router.get('/QR', QR.ScanQR);
-user_router.get('/', UserController.GetAll)
+user_router.get('/', AuthMiddleWare.isAuth, UserController.GetAll);
 
 user_router.get('/search', (req,res) => {
 	

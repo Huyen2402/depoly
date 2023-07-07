@@ -7,17 +7,6 @@ exports.create = async (req, res,next) => {
   console.log("create bill", req.body);
   console.log(req.body.body.BillDetails);
   try {
-    // if(_.isArray(req.body.BillDetails)){
-    //     const BillDetails = req.body.BillDetails.map(x => {
-    //         item = {
-              
-    //             IDProduct: x.IDProduct,
-    //             Price: x.Price,
-    //             Quantity: x.Quantity
-    //         }
-            
-    //     });
-    // }
     const BillDetails = req.body.body.BillDetails;
     const model = {
         TotalPrice: req.body.body.TotalPrice,
